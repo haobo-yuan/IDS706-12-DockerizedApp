@@ -8,8 +8,8 @@ The project showcases a fully integrated CI/CD workflow using GitHub Actions for
 
 ## Useful Links
 
-- Docker Hub Repo
-> https://hub.docker.com/r/haoboyuanduke/test_docker_cicd_py
+- Docker Hub Repository: haoboyuanduke/ids706-12-dockerizedapp
+> https://hub.docker.com/r/haoboyuanduke/ids706-12-dockerizedapp
 
 ---
 
@@ -49,12 +49,17 @@ The project showcases a fully integrated CI/CD workflow using GitHub Actions for
     docker run --rm ids706-12-dockerizedapp
     ```
 
-Once the Docker container is running, you can interact with the Python application inside the container (if you use -it). For example, if your application includes a web server, you can access it through the exposed port.
+### Steps to run with Docker
 
-To run the tests, use the following Docker command:
-```bash
-docker run -it your-username/your-repository:latest pytest
-```
+1. **Pull the Docker image**:
+    ```bash
+    docker pull haoboyuanduke/ids706-12-dockerizedapp
+    ```
+
+2. **Run the container**:
+    ```bash
+    docker run --rm haoboyuanduke/ids706-12-dockerizedapp
+    ```
 
 ---
 
