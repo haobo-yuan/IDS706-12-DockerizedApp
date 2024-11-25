@@ -1,7 +1,68 @@
-# AAPL Price Statistics (2010-2021)
-This is a IDS-706 homework project that calculates the mean, median,and standard deviation of AAPL stock close prices from 2010 to 2021.
+![CI/CD Pipeline](https://github.com/haobo-yuan/IDS706-12-DockerizedApp/actions/workflows/main.yml/badge.svg)
 
-![Logo Nasdaq](Logo_Nasdaq.png)![Logo AAPL](Logo_AAPL.png)
+# IDS-706 Data Engineering: Project 12
+
+This repository contains the week 12 project for IDS-706, focusing on creating a simple Python application containerized with Docker. The primary objectives are to demonstrate running the application within a Docker container using docker run commands and to build a Docker image as part of a CI/CD pipeline, which is then pushed to Docker Hub or another container management service.
+
+The project showcases a fully integrated CI/CD workflow using GitHub Actions for automated building, linting, testing, and deployment of the Docker image to Docker Hub.
+
+## Useful Links
+
+- Docker Hub Repo
+> https://hub.docker.com/r/haoboyuanduke/test_docker_cicd_py
+
+---
+
+## Features
+- Containerized Python application for consistency and portability
+- Automated CI/CD pipeline using GitHub Actions
+- Linting, testing, and building tasks defined in the workflow
+- Docker image automatically pushed to Docker Hub upon successful tests
+
+## Setup Instructions
+
+### Prerequisites
+- Docker installed on your machine
+- Python 3.x installed locally
+- A GitHub and Docker Hub account
+
+### Steps to Set Up Locally
+
+1. **Clone the repository**:
+    ```bash
+    <!-- git clone https://github.com/your-username/your-repository.git -->
+    git clone https://github.com/haobo-yuan/IDS706-12-DockerizedApp.git
+
+    <!-- cd your-repository -->
+    cd IDS706-12-DockerizedApp
+    ```
+
+2. **Build the Docker image**:
+    ```bash
+    <!-- docker build -t your-username/your-repository:latest . -->
+    docker build -t ids706-12-dockerizedapp .
+    ```
+
+3. **Run the container**:
+    ```bash
+    <!-- docker run -it your-username/your-repository:latest -->
+    docker run --rm ids706-12-dockerizedapp
+    ```
+
+Once the Docker container is running, you can interact with the Python application inside the container (if you use -it). For example, if your application includes a web server, you can access it through the exposed port.
+
+To run the tests, use the following Docker command:
+```bash
+docker run -it your-username/your-repository:latest pytest
+```
+
+---
+
+## AAPL Price Statistics (2010-2021)
+
+This project calculates the mean, median,and standard deviation of AAPL stock close prices from 2010 to 2021.
+
+![Logo Nasdaq](pictures/Logo_Nasdaq.png)![Logo AAPL](pictures/Logo_AAPL.png)
 
 The data is from the everyday close price of <NASDAQ 100 Data From 2010> dataset on Kaggle.
 >https://www.kaggle.com/datasets/kalilurrahman/nasdaq100-stock-price-data/data 
@@ -23,11 +84,22 @@ The statistics are as follows:
 |   2021 | 134.344   | 132.42    |  9.86899  |## Description and Conclusion:
 
 
-![Plot](plot.png)
+![Plot](pictures/plot.png)
 
+### Description and Conclusion:
 Apple Inc.'s stock performance from 2010 to 2021 shows significant growth, with the average
-                price rising from $9.28 to $134.34. The company saw consistent increases in stock value, 
-                particularly in 2020 and 2021, likely driven by strong demand for electronics during the pandemic
-                and its market leadership in innovation. While volatility increased in the later years, especially
-                in 2020 with the standard deviation peaking at 21.81, Apple's overall performance was robust,
-                reflecting its resilience and growth in the global tech industry.
+price rising from $9.28 to $134.34. The company saw consistent increases in stock value, 
+particularly in 2020 and 2021, likely driven by strong demand for electronics during the pandemic
+and its market leadership in innovation. While volatility increased in the later years, especially
+in 2020 with the standard deviation peaking at 21.81, Apple's overall performance was robust,
+reflecting its resilience and growth in the global tech industry.
+
+
+## Reference
+
+Simple python docker dev example for the official docker docs
+> https://docs.docker.com/language/python/containerize/
+> https://docs.docker.com/guides/language/python/configure-ci-cd/
+
+Python Project Scaffold and Makefile Setup, from coursera by Prof. Gift
+> https://www.coursera.org/videos/cloud-computing-foundations-duke/dxL50?query=scaffold&source=search

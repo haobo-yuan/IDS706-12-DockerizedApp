@@ -1,22 +1,40 @@
 import pytest
 import pandas as pd
 import os
-import main
+from main import preprocess_data, generate_plot
 
-# Test 1: Ensure data is loaded correctly
-def test_data_loading():
-    yearly_stats = main.preprocess_data()
-    assert not yearly_stats.empty, "Data loading failed: No data found."
 
-# Test 2: Check if README is generated
-def test_readme_generation():
-    if os.path.exists("README.md"):
-        with open("README.md", 'r') as f:
-            content = f.read()
-            assert "Statistics" in content, "README may miss statistics"
-    else:
-        pytest.fail("README.md not found")
+# Test the preprocess_data function
+def test_preprocess_data():
+    # Call the function
+    data = preprocess_data()
 
-# Test 3: Check if plot image is generated
-def test_plot_generation():
-    assert os.path.exists("plot.png"), "plot.png not generated"
+    # Assert the returned object is a DataFrame
+    assert isinstance(
+        data, pd.DataFrame
+    ), "The returned object should be a pandas DataFrame."
+
+    # Assert the required columns exist
+    assert "mean" in data.columns, "'mean' column is missing in the output DataFrame."
+    assert (
+        "median" in data.columns
+    ), "'median' column is missing in the output DataFrame."
+    assert "std" in data.columns, "'std' column is missing in the output DataFrame."
+
+
+# Test the generate_plot function
+def test_generate_plot():
+    # Prepare dummy data for testing
+    data = pd.DataFrame(
+        {"mean": [100, 110, 120], "median": [90, 100, 110], "std": [5, 6, 7]},
+        index=[2019, 2020, 2021],
+    )
+
+    # Call the function
+    generate_plot(data)
+
+    # Check if the plot file is created
+    assert os.path.exists("plot.png"), "The plot file was not created."
+
+    # Clean up the generated plot file after the test
+    os.remove("plot.png")

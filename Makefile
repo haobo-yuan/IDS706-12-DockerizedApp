@@ -11,7 +11,4 @@ format:
 lint:
 	pylint --disable=R,C main.py
 
-# deploy:
-	# todo
-
-all: install lint test format deploy
+all: install lint test format
